@@ -118,7 +118,7 @@ class BaseModel(nn.Module):
            batch_t = aud_feature.shape[0]
            stu_img1 = mvsa_feature.unsqueeze(dim=1).expand(-1, batch_t, -1)
            stu_aud1 = aud_feature.unsqueeze(dim=0).expand(batch_v, -1, -1)
-           loss2 = self.knowlegdeTranfer(mvsa_feature1, Ft, stu_img1, stu_aud1)
+           loss2 = self.knowlegdeTranfer(mvsa_feature1.detach(), Ft.detach(), stu_img1, stu_aud1)
         elif flag==False and val==True:
            batch_v = mvsa_feature.shape[0]
            batch_t = aud_feature.shape[0]
